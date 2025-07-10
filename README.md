@@ -12,6 +12,8 @@ npm install chatrace
 
 ```js
 import { ChatRace } from 'chatrace';
+//o
+const { ChatRace } = require('chatrace');
 
 const chat = new ChatRace({
   URL: 'https://api.chatrace.com',
