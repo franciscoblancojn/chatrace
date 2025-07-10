@@ -25,15 +25,15 @@ const chat = new ChatRace({
 
 ## Métodos principales
 
-1) onRequest: Realiza una petición genérica a la API.
-getIdCustomFieldApi: Obtiene todos los custom fields desde la API.
-getIdCustomField: Obtiene el id de un custom field por nombre.
-setCustomField: Asigna un valor a un custom field de un usuario.
-onCreateUser: Crea un usuario nuevo.
-onExecuteFlow: Ejecuta un flujo para un usuario.
-getUsersByCustomField: Busca usuarios por valor de custom field.
-getUsersById: Obtiene un usuario por su id.
-onCreateUserIfNotExist: Crea un usuario solo si no existe (por id).
+- onRequest: Realiza una petición genérica a la API.
+- getIdCustomFieldApi: Obtiene todos los custom fields desde la API.
+- getIdCustomField: Obtiene el id de un custom field por nombre.
+- setCustomField: Asigna un valor a un custom field de un usuario.
+- onCreateUser: Crea un usuario nuevo.
+- onExecuteFlow: Ejecuta un flujo para un usuario.
+- getUsersByCustomField: Busca usuarios por valor de custom field.
+- getUsersById: Obtiene un usuario por su id.
+- onCreateUserIfNotExist: Crea un usuario solo si no existe (por id).
 
 ## Ejemplo de uso
 
@@ -47,9 +47,9 @@ await chat.onCreateUser({
 
 ## Tipos de configuración
 
-URL: string. URL base de la API de Chatrace.
-TOKEN: string. Token de acceso.
-CUSTOM_FIELDS: Array de objetos { id, name, type }.
+- URL: string. URL base de la API de Chatrace.
+- TOKEN: string. Token de acceso.
+- CUSTOM_FIELDS: Array de objetos { id, name, type }.
 
 ## Licencia
 ISC
