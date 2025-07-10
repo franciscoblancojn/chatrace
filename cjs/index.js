@@ -1,44 +1,16 @@
-export interface IChatRace {
-    URL: string;
-    TOKEN: string;
-    CUSTOM_FIELDS: {
-        id: string;
-        name: string;
-        type: string;
-    }[];
-
-    setCustomFieldProps: { key: string; value: string; user_id: string };
-    onCreateUserProps: {
-        phone: string;
-        first_name: string;
-        last_name: string;
-        email?: string;
-        gender?: string;
-    };
-    onExecuteFlowProps: { user_id: string; flow_id: string };
-    getUsersByCustomFieldProps: { key: string; value: string };
-    onCreateUserIfNotExistProps: IChatRace["onCreateUserProps"] & {
-        id: string;
-    };
-}
-
-export class ChatRace {
-    URL: IChatRace["URL"];
-    TOKEN: IChatRace["TOKEN"];
-    CUSTOM_FIELDS: IChatRace["CUSTOM_FIELDS"];
-
-    constructor({ TOKEN, URL, CUSTOM_FIELDS }: IChatRace) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ChatRace = void 0;
+class ChatRace {
+    URL;
+    TOKEN;
+    CUSTOM_FIELDS;
+    constructor({ TOKEN, URL, CUSTOM_FIELDS }) {
         this.TOKEN = TOKEN;
         this.URL = URL;
         this.CUSTOM_FIELDS = CUSTOM_FIELDS;
     }
-    async onRequest({
-        body = undefined,
-        method = "GET",
-        url,
-    }: {
-        url: string;
-    } & RequestInit) {
+    async onRequest({ body = undefined, method = "GET", url, }) {
         try {
             const respond = await fetch(`${this.URL}${url}`, {
                 headers: {
@@ -50,7 +22,8 @@ export class ChatRace {
             });
             const result = await respond.json();
             return result;
-        } catch (error) {
+        }
+        catch (error) {
             console.error(error);
             throw error;
         }
@@ -61,15 +34,11 @@ export class ChatRace {
         });
         return result;
     }
-    async getIdCustomField(key: string) {
+    async getIdCustomField(key) {
         const id = this.CUSTOM_FIELDS.find((e) => e.name == key)?.id;
         return id;
     }
-    async setCustomField({
-        key,
-        value,
-        user_id,
-    }: IChatRace["setCustomFieldProps"]) {
+    async setCustomField({ key, value, user_id, }) {
         const id = await this.getIdCustomField(key);
         if (!id) {
             throw new Error("key invalid");
@@ -83,13 +52,7 @@ export class ChatRace {
         });
         return result;
     }
-    async onCreateUser({
-        phone,
-        first_name,
-        last_name,
-        email,
-        gender,
-    }: IChatRace["onCreateUserProps"]) {
+    async onCreateUser({ phone, first_name, last_name, email, gender, }) {
         const result = await this.onRequest({
             url: `/users`,
             method: "POST",
@@ -103,17 +66,14 @@ export class ChatRace {
         });
         return result;
     }
-    async onExecuteFlow({ user_id, flow_id }: IChatRace["onExecuteFlowProps"]) {
+    async onExecuteFlow({ user_id, flow_id }) {
         const result = await this.onRequest({
             url: `/users/${user_id}/send/${flow_id}`,
             method: "POST",
         });
         return result;
     }
-    async getUsersByCustomField({
-        key,
-        value,
-    }: IChatRace["getUsersByCustomFieldProps"]) {
+    async getUsersByCustomField({ key, value, }) {
         const field_id = await this.getIdCustomField(key);
         if (!field_id) {
             throw new Error("key custom field invalid");
@@ -125,7 +85,7 @@ export class ChatRace {
         result.field_id = field_id;
         return result;
     }
-    async getUsersById(id: string) {
+    async getUsersById(id) {
         if (!id) {
             throw new Error("id invalid");
         }
@@ -133,18 +93,9 @@ export class ChatRace {
             url: `/users/${id}`,
             method: "GET",
         });
-
         return result;
     }
-
-    async onCreateUserIfNotExist({
-        id,
-        first_name,
-        last_name,
-        phone,
-        email,
-        gender,
-    }: IChatRace["onCreateUserIfNotExistProps"]) {
+    async onCreateUserIfNotExist({ id, first_name, last_name, phone, email, gender, }) {
         try {
             const user = await this.getUsersById(id);
             if (user == undefined) {
@@ -164,7 +115,8 @@ export class ChatRace {
                 isNew: false,
                 user,
             };
-        } catch (error: any) {
+        }
+        catch (error) {
             return {
                 create: false,
                 message: error?.message,
@@ -173,3 +125,5 @@ export class ChatRace {
         }
     }
 }
+exports.ChatRace = ChatRace;
+//# sourceMappingURL=index.js.map
