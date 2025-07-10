@@ -1,0 +1,24 @@
+{
+  "name": "chatrace",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/franciscoblancojn/chatrace.git"
+  },
+  "keywords": [
+    "chatrace",
+    "api",
+    "send-message"
+  ],
+  "author": "franciscoblancojn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/franciscoblancojn/chatrace/issues"
+  },
+  "homepage": "https://github.com/franciscoblancojn/chatrace#readme"
+}
