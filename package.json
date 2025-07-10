@@ -1,6 +1,6 @@
 {
   "name": "chatrace",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Class for conecct with Chatrace services",
   "main": "./cjs/index.js",
   "module": "./cjs/index.js",
