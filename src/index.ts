@@ -1,5 +1,5 @@
 export interface IChatRace {
-    PROPS : {
+    PROPS: {
         URL: string;
         TOKEN: string;
         CUSTOM_FIELDS: {
@@ -7,7 +7,7 @@ export interface IChatRace {
             name: string;
             type: string;
         }[];
-    }
+    };
 
     setCustomFieldProps: { key: string; value: string; user_id: string };
     onCreateUserProps: {
@@ -25,11 +25,11 @@ export interface IChatRace {
 }
 
 export class ChatRace {
-    URL: IChatRace['PROPS']["URL"];
-    TOKEN: IChatRace['PROPS']["TOKEN"];
-    CUSTOM_FIELDS: IChatRace['PROPS']["CUSTOM_FIELDS"];
+    URL: IChatRace["PROPS"]["URL"];
+    TOKEN: IChatRace["PROPS"]["TOKEN"];
+    CUSTOM_FIELDS: IChatRace["PROPS"]["CUSTOM_FIELDS"];
 
-    constructor({ TOKEN, URL, CUSTOM_FIELDS }: IChatRace['PROPS']) {
+    constructor({ TOKEN, URL, CUSTOM_FIELDS }: IChatRace["PROPS"]) {
         this.TOKEN = TOKEN;
         this.URL = URL;
         this.CUSTOM_FIELDS = CUSTOM_FIELDS;

@@ -1,11 +1,13 @@
 export interface IChatRace {
-    URL: string;
-    TOKEN: string;
-    CUSTOM_FIELDS: {
-        id: string;
-        name: string;
-        type: string;
-    }[];
+    PROPS: {
+        URL: string;
+        TOKEN: string;
+        CUSTOM_FIELDS: {
+            id: string;
+            name: string;
+            type: string;
+        }[];
+    };
     setCustomFieldProps: {
         key: string;
         value: string;
@@ -31,10 +33,10 @@ export interface IChatRace {
     };
 }
 export declare class ChatRace {
-    URL: IChatRace["URL"];
-    TOKEN: IChatRace["TOKEN"];
-    CUSTOM_FIELDS: IChatRace["CUSTOM_FIELDS"];
-    constructor({ TOKEN, URL, CUSTOM_FIELDS }: IChatRace);
+    URL: IChatRace["PROPS"]["URL"];
+    TOKEN: IChatRace["PROPS"]["TOKEN"];
+    CUSTOM_FIELDS: IChatRace["PROPS"]["CUSTOM_FIELDS"];
+    constructor({ TOKEN, URL, CUSTOM_FIELDS }: IChatRace["PROPS"]);
     onRequest({ body, method, url, }: {
         url: string;
     } & RequestInit): Promise<any>;
