@@ -1,6 +1,6 @@
 # ChatRace
 
-ChatRace es una clase para conectar y operar con la API de Chatrace, permitiendo gestionar usuarios, custom fields y flujos desde Node.js o TypeScript.
+ChatRace es una clase para conectar y operar con la API de Chatrace, permitiendo gestionar usuarios, custom fields y flujos desde Node.js.
 
 ## Instalación
 
